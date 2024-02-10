@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SavePdftoDB.Models.FileDetailsModel>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<table class="table table-bordered table-hover table-striped  text-center">
+    <tr>
+        <th class="col-md-1 text-center">
+            @Html.DisplayNameFor(model => model.FileName)
+        </th>
+        <th class="col-md-1 text-center">
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.ActionLink("Downlaod", "DownLoadFile", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteFile", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>   
